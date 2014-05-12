@@ -1,0 +1,27 @@
+#! /bin/sh
+cd home/tech-admin/UBUNTU/
+echo "Remaster" && add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner" && apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E  && add-apt-repository "deb http://linux.dropbox.com/ubuntu  $(lsb_release -sc) main" && add-apt-repository ppa:webupd8team/java && add-apt-repository ppa:ubuntu-wine/ppa && add-apt-repository ppa:linrunner/tlp && apt-add-repository ppa:robbiew/cups-bjnp && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' && echo 'deb http://download.opensuse.org/repositories/isv:ownCloud:community/xUbuntu_13.10/ /' >> /etc/apt/sources.list && wget http://download.opensuse.org/repositories/isv:ownCloud:community/xUbuntu_13.10/Release.key && apt-key add - < Release.key && sudo sh -c 'echo "deb http://archive.canonical.com/ubuntu trusty partner" >> /etc/apt/sources.list.d/canonical_partner.list' && apt-get update
+apt-get -y install lubuntu-restricted-*
+apt-get -y remove abiword abiword-common gnumeric chromium-* sylpheed* transmission* xfburn
+apt-get -y install libreoffice thunderbird pidgin filezilla gimp inkscape scribus dia freemind planner mc openssh-server xrdp dropbox printer-driver-* hplip hpijs-ppds hp-ppd djtools google-chrome-stable vlc brasero rhythmbox owncloud-client ocsinventory-agent keepnote oracle-java7-installer openssh-server mc clamtk keepassx samba system-config-samba numlockx parcellite tlp pdfshuffler file-roller libxine1-ffmpeg mencoder flac faac faad sox ffmpeg2theora libmpeg2-4 uudeview libmpeg3-1 mpeg3-utils mpegdemux liba52-dev mpeg2dec vorbis-tools id3v2 mpg321 mpg123 libflac++6 totem-mozilla icedax lame libmad0 libjpeg-progs libdvdread4 libdvdnav4 libswscale-extra-2 cifs-utils winbind ntfs-config gstreamer0.10-fluendo-mp3 gstreamer0.10-gnonlin gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-bad gstreamer0.10-plugins-ugly totem-plugins-extra gstreamer-tools ttf-mscorefonts-installer regionset flashplugin-installer unace unrar zip unzip p7zip-full p7zip-rar sharutils rar uudeview mpack arj cabextract tlp-rdw indicator-multiload diodon diodon-plugins libappindicator1 cups-bjnp printer-driver-gutenprint thunar
+dpkg --add-architecture i386
+nano /etc/apt/sources.list.d/google-chrome.list
+nano /etc/apt/sources.list.d/dropbox.list 
+apt-get update
+apt-get install skype
+dpkg -i cndrvcups-common_2.60-1_amd64.deb
+dpkg -i cndrvcups-capt_2.60-1_amd64.deb
+dpkg -i teamviewer_linux.deb
+apt-get install -f
+dpkg -i teamviewer_linux.deb
+dpkg -i picasa_3.0-current_i386.deb
+mv startwm.sh /etc/xrdp/startwm.sh
+rm -f /etc/samba/smb.conf
+mv smb.conf /etc/samba/smb.conf
+mv pcmanfm /usr/local/bin/pcmanfm
+chmod +x /usr/local/bin/pcmanfm
+mkdir -p /etc/hal/fdi/policy
+usermod -G lp -a root
+nano /etc/xdg/lxsession/Lubuntu/autostart
+
+
